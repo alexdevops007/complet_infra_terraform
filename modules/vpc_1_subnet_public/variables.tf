@@ -7,5 +7,5 @@ variable "vpc-name" {
 }
 
 variable "public_subnet_1_name" {
-  description = "name of public subnet"
+  description = "name of public subnet 1"
 }
