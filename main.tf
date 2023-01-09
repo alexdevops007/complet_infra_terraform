@@ -4,3 +4,11 @@ module "vpc_1_subnet_public" {
   vpc-name             = var.vpc_name
   public_subnet_1_name = var.public_subnet_1_name
 }
+
+module "ec2_nginx" {
+  source                = "./modules/ec2_nginx"
+  ec2_instance_tag_name = var.ec2_tag_name
+  ec2_instance_type     = var.ec2_type
+  ec2_vpc_id            = module.vpc_1_subnet_public.vpc_id
+  ec2_subnet_id         = module.vpc_1_subnet_public.subnet_id
+}

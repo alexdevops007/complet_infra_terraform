@@ -13,3 +13,11 @@ variable "vpc_name" {
 variable "public_subnet_1_name" {
   description = "name of public subnet 1"
 }
+
+variable "ec2_tag_name" {
+  description = "tag name of ec2"
+}
+
+variable "ec2_type" {
+  description = "ec2 instance type value"
+}

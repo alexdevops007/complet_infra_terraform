@@ -22,3 +22,13 @@ output "nat_gateway-id" {
 output "subnet-id" {
   value = module.vpc_1_subnet_public.subnet_id
 }
+
+# Public DNS
+output "public-dns" {
+  value = module.ec2_nginx.public_dns
+}
+
+# Public IP
+output "public-ip" {
+  value = module.ec2_nginx.public_ip
+}
