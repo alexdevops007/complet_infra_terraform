@@ -12,3 +12,10 @@ module "ec2_nginx" {
   ec2_vpc_id            = module.vpc_1_subnet_public.vpc_id
   ec2_subnet_id         = module.vpc_1_subnet_public.subnet_id
 }
+
+module "private_subnet" {
+  source = "./modules/private_subnet"
+  vpc-cidr = var.vpc_cidr
+  vpc-id = module.vpc_1_subnet_public.vpc_id
+  vpc-nat_gateway-id = module.vpc_1_subnet_public.nat_gateway_id
+}
