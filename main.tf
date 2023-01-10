@@ -30,3 +30,10 @@ module "second_public_subnet" {
   vpc-id             = module.vpc_1_subnet_public.vpc_id
   vpc-nat_gateway-id = module.vpc_1_subnet_public.nat_gateway_id
 }
+
+## Elastic Load Balancer
+module "elb" {
+  source        = "./modules/elb"
+  elb_subnet_id = [module.vpc_1_subnet_public.subnet_id]
+  elb_vpc_id    = module.vpc_1_subnet_public.vpc_id
+}

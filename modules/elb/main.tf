@@ -1,5 +1,5 @@
 resource "aws_elb" "elb" {
-  name            = "my elb"
+  name            = "my-elb"
   security_groups = [aws_security_group.elb_sg.id]
   subnets         = var.elb_subnet_id
 

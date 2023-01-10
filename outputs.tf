@@ -32,3 +32,8 @@ output "public-dns" {
 output "public-ip" {
   value = module.ec2_nginx.public_ip
 }
+
+# ELB dns name
+output "elb_dns_name" {
+  value = module.elb.dns_name
+}
