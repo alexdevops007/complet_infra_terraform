@@ -17,16 +17,16 @@ module "ec2_nginx" {
 
 ## Private subnet Module
 module "private_subnet" {
-  source = "./modules/private_subnet"
-  vpc-cidr = var.vpc_cidr
-  vpc-id = module.vpc_1_subnet_public.vpc_id
+  source             = "./modules/private_subnet"
+  vpc-cidr           = var.vpc_cidr
+  vpc-id             = module.vpc_1_subnet_public.vpc_id
   vpc-nat_gateway-id = module.vpc_1_subnet_public.nat_gateway_id
 }
 
 ## Second public subnet
 module "second_public_subnet" {
-  source = "./modules/second_subnet_public"
-  vpc-cidr = var.vpc_cidr
-  vpc-id = module.vpc_1_subnet_public.vpc_id
+  source             = "./modules/second_subnet_public"
+  vpc-cidr           = var.vpc_cidr
+  vpc-id             = module.vpc_1_subnet_public.vpc_id
   vpc-nat_gateway-id = module.vpc_1_subnet_public.nat_gateway_id
 }
