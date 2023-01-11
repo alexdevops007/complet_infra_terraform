@@ -21,3 +21,7 @@ variable "ec2_tag_name" {
 variable "ec2_type" {
   description = "ec2 instance type value"
 }
+
+variable "min_size" {}
+
+variable "max_size" {}

@@ -1,7 +1,23 @@
+# data source
+data "aws_ami" "nginx" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
 resource "aws_launch_configuration" "launch_configuration" {
-  image_id = var.asg-ami
+  image_id = data.aws_ami.nginx.id
   instance_type = var.asg-instance-type
-  key_name = var.asg-key-name
+  key_name = "newKey"
   security_groups = [aws_security_group.asg_security_group.id]
   user_data = <<-EOF
         #!/bin/bash

@@ -37,3 +37,14 @@ module "elb" {
   elb_subnet_id = [module.vpc_1_subnet_public.subnet_id]
   elb_vpc_id    = module.vpc_1_subnet_public.vpc_id
 }
+
+## Autoscaling group
+module "asg" {
+  source            = "./modules/asg"
+  asg-subnet-id     = module.vpc_1_subnet_public.subnet_id
+  vpc-id            = module.vpc_1_subnet_public.vpc_id
+  asg-elb-name      = module.elb.name
+  asg-instance-type = var.ec2_type
+  asg-max-size      = var.max_size
+  asg-min-size      = var.min_size
+}
