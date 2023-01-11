@@ -1,24 +1,8 @@
-# data source
-data "aws_ami" "nginx" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
-  }
-}
-
 # create ec2
 resource "aws_instance" "ec2_nginx" {
-  ami = data.aws_ami.nginx.id
+  ami = var.ec2_ami
   instance_type = var.ec2_instance_type
-  key_name = "newKey"
+  key_name = var.ec2_instance_key_name
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
   subnet_id = var.ec2_subnet_id
   user_data = <<-EOF

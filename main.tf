@@ -10,9 +10,11 @@ module "vpc_1_subnet_public" {
 module "ec2_nginx" {
   source                = "./modules/ec2_nginx"
   ec2_instance_tag_name = var.ec2_tag_name
-  ec2_instance_type     = var.ec2_type
+  ec2_instance_type     = var.instance_type
   ec2_vpc_id            = module.vpc_1_subnet_public.vpc_id
   ec2_subnet_id         = module.vpc_1_subnet_public.subnet_id
+  ec2_ami               = var.ami
+  ec2_instance_key_name = var.key_name
 }
 
 ## Private subnet Module
@@ -41,10 +43,12 @@ module "elb" {
 ## Autoscaling group
 module "asg" {
   source            = "./modules/asg"
+  asg-ami           = var.ami
+  asg-key-name      = var.key_name
   asg-subnet-id     = module.vpc_1_subnet_public.subnet_id
   vpc-id            = module.vpc_1_subnet_public.vpc_id
   asg-elb-name      = module.elb.name
-  asg-instance-type = var.ec2_type
+  asg-instance-type = var.instance_type
   asg-max-size      = var.max_size
   asg-min-size      = var.min_size
 }

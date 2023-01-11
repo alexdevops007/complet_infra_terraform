@@ -18,10 +18,14 @@ variable "ec2_tag_name" {
   description = "tag name of ec2"
 }
 
-variable "ec2_type" {
-  description = "ec2 instance type value"
+variable "instance_type" {
+  description = "instance type value"
 }
 
 variable "min_size" {}
 
 variable "max_size" {}
+
+variable "ami" {}
+
+variable "key_name" {}

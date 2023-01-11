@@ -13,3 +13,11 @@ variable "ec2_vpc_id" {
 variable "ec2_subnet_id" {
   description = "value of subnet id"
 }
+
+variable "ec2_ami" {
+  description = "value of ec2 ami"
+}
+
+variable "ec2_instance_key_name" {
+  description = "key name"
+}
